@@ -1,0 +1,42 @@
+﻿@using Entity.ViewModels.About
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@model AboutEditVM
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input hidden asp-for="getVM.Id" />
+
+        <label asp-for="postVM.AboutName">Title</label>
+        <input class="form-control" asp-for="postVM.AboutName" value="@Model.getVM.AboutName" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+
+        <label asp-for="postVM.AboutTitle">Title</label>
+        <input class="form-control" asp-for="postVM.AboutTitle" value="@Model.getVM.AboutTitle" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+
+        <label asp-for="postVM.Aboutdescription">Title</label>
+        <input class="form-control" asp-for="postVM.Aboutdescription" value="@Model.getVM.Aboutdescription" placeholder="Enter title">
+    </div>
+    @for (int i = 0; i < Model.getVM.AboutActions.Count; i++)
+    {
+        <div class="form-group">
+
+            <label asp-for="@Model.getVM.AboutActions[i]">Title</label>
+            <input class="form-control" asp-for="@Model.postVM.AboutActions[i].Name" value="@Model.getVM.AboutActions[i].Name" placeholder="Enter action name">
+        </div>
+    }
+    <div class="form-group">
+
+        <label asp-for="postVM.FormFile">Title</label>
+        <input type="file" accept="image/*" class="form-control" asp-for="postVM.FormFile">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

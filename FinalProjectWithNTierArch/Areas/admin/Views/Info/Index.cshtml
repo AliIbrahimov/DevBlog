@@ -1,0 +1,44 @@
+﻿@using Entity.ViewModels.Setting
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+@model List<SettingGetVM>
+<link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="~/assets/css/style.css" rel="stylesheet">
+
+<a asp-area="admin" asp-controller="info" asp-action="edit" asp-route-id="@Model.FirstOrDefault().Id" class="btn btn-outline-danger">Edit</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Social Media</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@item.Mail</td>
+                <td>@item.Phone</td>
+                <td>@item.Adress</td>
+                <td>
+                    <i class="@item.InstagramIcon"></i>
+                    <i class="@item.FacebookIcon"></i>
+                    <i class="@item.YoutubeIcon"></i>
+                    <i class="@item.LinkedinIcon"></i>
+                </td>
+                <td>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Business</id>
+    <version>1.0.0</version>
+    <authors>Business</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Core" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="DataAccess" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Entity" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AutoMapper" version="12.0.0" exclude="Build,Analyzers" />
+        <dependency id="AutoMapper.Extensions.Microsoft.DependencyInjection" version="12.0.0" exclude="Build,Analyzers" />
+        <dependency id="FluentValidation.AspNetCore" version="11.2.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\354_1\Desktop\BackEnd\FinalProjectWithNTierArch\Business\bin\Debug\net6.0\Business.dll" target="lib\net6.0\Business.dll" />
+  </files>
+</package>

@@ -1,0 +1,224 @@
+﻿@using Entity.ViewModels.Developer
+@{
+    ViewData["Title"] = "DeveloperEdit";
+}
+@model DeveloperEditVM
+<div class="container-fluid bg-primary py-5 bg-header2">
+</div>
+<section style="background: rgba(9, 30, 62, .7); ">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between">
+
+                    <h1>Profile</h1>
+                </nav>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            @if (Model.GetVM.ProfileImage is null)
+                            {
+                                <img src="/assets//img/avatar.webp" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            }
+                            else
+                            {
+                                <img src="/assets//img/@Model.GetVM.ProfileImage" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            }
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <input hidden asp-for="@Model.GetVM.Id" />
+                            <div class="card-body">
+                                <div class="form-group">
+
+                                    <label asp-for="@Model.PostVM.FormFile"></label>
+                                    <input type="file" class="form-control" asp-for="@Model.PostVM.FormFile">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div asp-validation-summary="ModelOnly"></div>
+                                    <input hidden asp-for="@Model.GetVM.Id" readonly />
+
+                                </div>
+                                <hr>
+                                <div class="form-group">
+
+                                    <label asp-for="@Model.PostVM.Position">Position</label>
+                                    <input class="form-control" asp-for="@Model.PostVM.Position" value="@Model.GetVM.Position" placeholder="Enter title">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fas fa-globe fa-lg text-warning"></i>
+                                    <p class="mb-0">https://mdbootstrap.com</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+
+                            <div class="form-group">
+
+                                <div asp-validation-summary="ModelOnly"></div>
+                                <input hidden asp-for="@Model.GetVM.Id" />
+
+                                <label asp-for="@Model.PostVM.AppUser.UserName">Username</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.UserName" value="@Model.GetVM.UserName" readonly />
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <label asp-for="@Model.PostVM.AppUser.Name">Name</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.Name" value="@Model.GetVM.Name" placeholder="Enter name">
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <label asp-for="@Model.PostVM.AppUser.Surname">Surname</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.Surname" value="@Model.GetVM.Surname" placeholder="Enter surname">
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <label asp-for="@Model.PostVM.AppUser.Email">Email</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.Email" value="@Model.GetVM.Email" readonly>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <label asp-for="@Model.PostVM.AppUser.PhoneNumber">Number</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.PhoneNumber" value="@Model.GetVM.PhoneNumber" placeholder="Enter number">
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <label asp-for="@Model.PostVM.AppUser.Adress">Address</label>
+                                <input class="form-control" asp-for="@Model.PostVM.AppUser.Adress" value="@Model.GetVM.Adress" placeholder="Enter address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @if (Model.GetVM.Projects is not null)
+                        {
+                            @foreach (var item in Model.GetVM.Projects)
+                            {
+                                <div class="col-sm-6">
+                                    <div>
+                                        <a class="btn btn-danger delete-btn" asp-controller="account" asp-action="DeleteProject" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@item.Name</h5>
+                                            <img style="width:100px;height:100px" src="~/assets/img/@item.Image" />
+                                            <a href="@item.ProjectUrl" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="container ">
+
+                        <div class="row projects">
+
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    @for (int i = 0; i < 1; i++)
+                                    {
+
+                                        <div class="card-body">
+                                            <div class="form-group">
+
+                                                <div asp-validation-summary="ModelOnly"></div>
+                                                <input hidden asp-for="@Model.GetVM.Id" />
+
+                                                <label asp-for="@Model.PostVM.Projects[i].Name">Project Name</label>
+                                                <input class="form-control" asp-for="@Model.PostVM.Projects[i].Name" />
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label asp-for="@Model.PostVM.Projects[i].ProjectUrl">Project Url</label>
+                                                <input class="form-control" asp-for="@Model.PostVM.Projects[i].ProjectUrl" />
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label asp-for="@Model.PostVM.Projects[i].FormFile">Project Image</label>
+                                                <input class="form-control" asp-for="@Model.PostVM.Projects[i].FormFile" />
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label asp-for="@Model.PostVM.Projects[i].Description">Project description</label>
+                                                <input class="form-control" asp-for="@Model.PostVM.Projects[i].Description" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+                </div>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="~/assets/js/App.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        @*Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        console.log("Hello")
+        if (result.isConfirmed) {
+        Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+        )
+        }
+        })*@
+    </div>
+    </div>
+
+
+</section>
+
+

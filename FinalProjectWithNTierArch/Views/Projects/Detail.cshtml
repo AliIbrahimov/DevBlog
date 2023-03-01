@@ -1,0 +1,104 @@
+﻿@using Entity.ViewModels.Project
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@model ProjectEditVM
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">Blog Detail</h1>
+            <a href="" class="h5 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="" class="h5 text-white">Blog Detail</a>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+<!-- Blog Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <!-- Blog Detail Start -->
+                <div class="mb-5">
+                    <h1 class="mb-4">@Model.projectGet.Name</h1>
+
+                    <img class="img-fluid w-100 rounded mb-5" src="~/assets/img/@Model.projectGet.Image" alt="">
+                    <h6 class="me-3"><i class="far fa-user text-primary me-2"></i>@Model.projectGet.AuthorName</h6>
+
+                    <p>@Model.projectGet.Description</p>
+                    <!-- Blog Detail End -->
+                    <!-- Comment List Start -->
+                    <div class="mb-5">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">@(Model.projectGet.Comments.Count) Comments</h3>
+                        </div>
+
+                        @for (int i = 0; i < Model.projectGet.Comments.Count; i++)
+                        {
+                            <div class="d-flex mb-4">
+                                <img src="~/assets/img/@(Model.projectGet.Comments[i].AppUser.ProfileImage is null?"avatar.webp":Model.projectGet.Comments[i].AppUser.ProfileImage)" class="img-fluid rounded" style="width: 45px; height: 45px;">
+                                <div class="ps-3">
+                                    <h6><a asp-controller="Account" asp-action="userprofile">@Model.projectGet.Comments[i].AppUser.UserName</a> <small><i>@Model.projectGet.Comments[i].SendedDate</i></small></h6>
+                                    <p>
+                                        @Model.projectGet.Comments[i].Message
+                                    </p>
+                                </div>
+                            </div>
+                        }ore
+                    </div>
+                    <!-- Comment List End -->
+                    <!-- Comment Form Start -->
+                    <div class="bg-light rounded p-5">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">Leave A Comment</h3>
+                        </div>
+                        <form method="post" asp-controller="Projects" asp-action="Comment">
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <textarea asp-for="@Model.projectPost.Comments.FirstOrDefault().Message" class="form-control bg-white border-0" rows="5" placeholder="Comment"></textarea>
+                                    <input hidden asp-for="@User.Identity.Name" />
+                                    <input hidden asp-for="@Model.projectPost.Comments.FirstOrDefault().ProjectId" value="@Model.projectGet.Id" />
+
+                                </div>
+                                <div class="col-12">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Leave Your Comment</button>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary w-100 py-3" asp-controller="Account" asp-action="Login">Leave Your Comment</a>
+                                    }
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Comment Form End -->
+                </div>
+
+                   
+                
+                    <!-- Plain Text Start -->
+                    <div class="wow slideInUp" data-wow-delay="0.1s">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">Plain Text</h3>
+                        </div>
+                        <div class="bg-light text-center" style="padding: 30px;">
+                            <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
+                            <a href="" class="btn btn-primary py-2 px-4">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Plain Text End -->
+                </div>
+                <!-- Sidebar End -->
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+

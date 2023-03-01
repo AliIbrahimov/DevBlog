@@ -1,0 +1,38 @@
+﻿@using Entity.Concrete
+@using Entity.ViewModels.Slider
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<SliderGetVM>
+
+ <a asp-controller="SLider" asp-action="Create" class="btn btn-outline-facebook">Create</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@item.Title</td>
+                <td>
+                    <img src="~/assets/img/@item.Image">
+                </td>
+                <td>
+                    <a asp-controller="SLider" asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.Id">Edit</a>
+                    <a asp-controller="SLider" asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>@item.Text</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

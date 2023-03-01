@@ -1,0 +1,25 @@
+﻿@using Entity.ViewModels.Statistic
+@{
+    ViewData["Title"] = "Edit";
+}
+@model StatisticEditVM
+
+<form method="post">
+    <div class="form-group">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input hidden asp-for="@Model.StatisticGets.Id" />
+
+        <label asp-for="StatisticPost.HappyClients">Happy Clients</label>
+        <input class="form-control" asp-for="StatisticPost.HappyClients" value="@Model.StatisticGets.HappyClients" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label asp-for="StatisticPost.ProjectsDone">ProjectsDone</label>
+        <input class="form-control" asp-for="StatisticPost.ProjectsDone" value="@Model.StatisticGets.ProjectsDone" placeholder="Enter text">
+    </div>
+    <div class="form-group">
+        <label asp-for="StatisticPost.WinAwards">WinAwards</label>
+        <input class="form-control" asp-for="StatisticPost.WinAwards" value="@Model.StatisticGets.WinAwards">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

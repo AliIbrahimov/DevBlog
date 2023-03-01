@@ -1,0 +1,32 @@
+﻿@using Entity.ViewModels.Services
+@model ServicesGetVM
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">@Model.Name</h5>
+                <h1 class="mb-0">@Model.Title</h1>
+            </div>
+            <div class="row g-5">
+                
+                    <div class="row" data-wow-delay="0.3s">
+                    @foreach (var item in Model.ServiceActions)
+                    {
+                            <div style="border: solid 5px white" class="col-lg-4 service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                               
+                                <div class="service-icon">
+                                    <i class="@item.Icon"></i>
+                                </div>
+                                <h4 class="mb-3">@item.Name</h4>
+                                <p class="m-0">@item.Title</p>
+                            </div>
+                            }
+                    </div>
+                
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

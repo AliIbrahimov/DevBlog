@@ -1,0 +1,37 @@
+﻿@using Entity.ViewModels.Statistic
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+@model List<StatisticGetVM>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Projects Done</th>
+            <th scope="col">Happy Clients</th>
+            <th scope="col">Win Awards</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>
+                    @item.ProjectsDone
+                    <i class="@item.ProjectsDoneIcon"></i>
+                </td>
+                <td>@item.HappyClients</td>
+                <td>@item.WinAwards</td>
+                <td>
+                    <a asp-area="admin" asp-controller="Statistic" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info">Edit</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

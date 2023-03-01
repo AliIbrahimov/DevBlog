@@ -1,0 +1,40 @@
+﻿@using Entity.ViewModels.ChooseUs
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<ChooseUsGetVM>
+<a class="btn btn-outline-github" asp-controller="Feature" asp-action="edit" >Edit</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model)
+       {
+            <tr>
+                <th scope="row">1</th>
+                <td>@item.Name.</td>
+                <td>@item.Title</td>
+                <td>
+                    @for (int i = 0; i < item.ChooseUsActions.Count; i++)
+                    {
+                        <p>
+                            @item.ChooseUsActions[i].Name
+                        </p>
+                    }
+                </td>
+                <td>
+                    <img src="~/assets/img/@item.Image" >
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

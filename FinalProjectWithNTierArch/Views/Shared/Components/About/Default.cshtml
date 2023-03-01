@@ -1,0 +1,51 @@
+﻿@inject Business.Abstract.ISettingService SETTING
+
+@using Entity.ViewModels.About
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model AboutGetVM
+
+
+
+<!-- About Start -->
+
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <div class="section-title position-relative pb-3 mb-5">
+                    <h5 class="fw-bold text-primary text-uppercase">@Model.AboutName</h5>
+                    <h1 class="mb-0">@Model.AboutTitle</h1>
+                </div>
+                <p class="mb-4">@Model.Aboutdescription</p>
+                <div class="row g-0 mb-3">
+                    <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+                        @for (int i = 0; i < Model.AboutActions.Count; i++)
+                        {
+                            <h5 class="mb-3"><i class="@Model.AboutActions[i].Icon"></i>@Model.AboutActions[i].Name</h5>
+                        }
+                    </div>
+
+                </div>
+                <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
+                    <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                        <i class="fa fa-phone-alt text-white"></i>
+                    </div>
+                    <div class="ps-4">
+                        <h5 class="mb-2">Call to ask any question</h5>
+                        <h4 class="text-primary mb-0">@SETTING.GetAllAsync().Result.FirstOrDefault().Phone</h4>
+                    </div>
+                </div>
+                <a class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s" asp-controller="pages" asp-action="quotes">Request A Quote</a>
+            </div>
+            <div class="col-lg-5" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="~/assets/img/@Model.Image" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->

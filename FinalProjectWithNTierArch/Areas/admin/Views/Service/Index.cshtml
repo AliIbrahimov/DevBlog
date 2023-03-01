@@ -1,0 +1,35 @@
+﻿@using Entity.ViewModels.Services
+
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+@model List<ServicesGetVM>
+<a class="btn btn-success" asp-controller="Service" asp-action="edit" asp-route-id="@Model.FirstOrDefault().Id">Edit</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@item.Name</td>
+                <td>@item.Title</td>
+                <td>
+                    @for (int i = 0; i < item.ServiceActions.Count; i++)
+                    {
+                        <p>@item.ServiceActions[i].Name</p>
+                    }
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

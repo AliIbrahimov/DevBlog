@@ -1,0 +1,44 @@
+﻿@using Entity.ViewModels.About
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+@model List<AboutGetVM>
+<a class="btn btn-info" asp-area="admin" asp-controller="About" asp-action="edit" asp-route-id=@Model.FirstOrDefault().Id>Edit</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Image</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@item.AboutName</td>
+                <td>@item.AboutTitle</td>
+                <td>@item.Aboutdescription</td>
+                <td>
+                    @for (int i = 0; i < item.AboutActions.Count; i++)
+                    {
+                        <p>@item.AboutActions[i].Name</p>
+                    }
+                </td>
+                <td>
+                    <img src="~/assets/img/@item.Image">
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+
+

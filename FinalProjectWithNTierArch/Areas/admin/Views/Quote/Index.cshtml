@@ -1,0 +1,43 @@
+﻿@using Entity.ViewModels.Quote
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<QuoteGetVM>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Message</th>
+            <th scope="col">IsActive</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@item.AppUser.Name</td>
+                <td>@item.AppUser.Email</td>
+                <td>@item.Message</td>
+                @if (item.IsActive == true)
+                {
+                    <td>
+                        <a class="btn btn-outline-success" asp-controller="quote" asp-action="PassiveQuote"  asp-route-id=@item.Id>@item.IsActive</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a class="btn btn-outline-danger" asp-controller="quote" asp-action="ActiveQuote"  asp-route-id=@item.Id>@item.IsActive</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

@@ -1,0 +1,26 @@
+﻿@using Entity.ViewModels.Slider
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@model SliderEditVM
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input hidden asp-for="SliderGetVM.Id" />
+
+        <label asp-for="SliderPostVM.Title">Title</label>
+        <input class="form-control" asp-for="SliderPostVM.Title" value="@Model.SliderGetVM.Title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label asp-for="SliderPostVM.Text">Title</label>
+        <input class="form-control" asp-for="SliderPostVM.Text" value="@Model.SliderGetVM.Text" placeholder="Enter text">
+    </div>
+    <div class="form-group">
+        <label asp-for="SliderPostVM.FormFile">Title</label>
+        <input accept="image/*" class="form-control" asp-for="SliderPostVM.FormFile">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

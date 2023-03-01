@@ -1,0 +1,21 @@
+﻿@using Entity.ViewModels.Slider
+@{
+    ViewData["Title"] = "Create";
+}
+@model SliderPostVM
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label asp-for="Text">Title</label>
+        <input class="form-control" asp-for="Text" placeholder="Enter text">
+    </div>
+    <div class="form-group">
+        <label asp-for="FormFile">Title</label>
+        <input accept="image/*" class="form-control" asp-for="FormFile">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
