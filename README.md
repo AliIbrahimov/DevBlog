@@ -29,7 +29,7 @@ Before running the project, ensure you have the following prerequisites installe
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/AliIbrahimov/finalproject.github.io
 2. Change to the project directory: 
 	```shell
    cd your-project
