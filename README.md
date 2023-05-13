@@ -1,21 +1,23 @@
-# EasyFreelance
+# DevBlog
 
-EasyFreelance is an ASP.NET Core 6 MVC project developed using n-tier architecture. It utilizes various technologies and frameworks such as Entity Framework, AutoMapper, Fluent Validation, and Identity to provide a robust and scalable solution. The project uses MSSQL as its database engine and incorporates features like email verification and password renewal. Additionally, users can add and renew profile photos, share blogs, and write comments.
+DevBlog is an ASP.NET Core 6 MVC project developed using n-tier architecture. It utilizes various technologies and frameworks such as Entity Framework, AutoMapper, Fluent Validation, Regex and Identity to provide a robust and scalable solution. The project uses MSSQL as its database engine and incorporates features like email verification and password renewal. Additionally, users can add and renew profile photos, share blogs, and write comments.
 
 
 ## Features
 
 - N-tier architecture for better separation of concerns and modularity.
-- ASP.NET Core 6 MVC framework for building scalable and maintainable web applications.
-- Entity Framework for object-relational mapping and database access.
-- AutoMapper for mapping between different object types.
-- Fluent Validation for robust input validation and error handling.
-- Identity for user management and authentication.
+- **ASP.NET Core** 6 MVC framework for building scalable and maintainable web applications.
+- **Entity Framework** for object-relational mapping and database access.
+- **AutoMapper** for mapping between different object types.
+- **Fluent Validation** for robust input validation and error handling.
+- **Identity** for user management and authentication.
 - Email verification token system for ensuring secure user registration.
 - Password renewal functionality for enhanced security.
 - Profile photo management for users.
 - Blog sharing functionality for users.
 - Commenting system for blogs.
+- **Regex**: Regular expressions (Regex) are utilized for pattern matching and validation, enabling powerful text processing and data manipulation.
+
 
 ## Prerequisites
 
